@@ -1,0 +1,36 @@
+import java.util.*;
+
+public class queue2stack {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int q = scan.nextInt();
+        Stack<Integer> stackEnq = new Stack<>();
+        Stack<Integer> stackDeq = new Stack<>();
+
+        for (int i = 0; i < q; i++) {
+            int type = scan.nextInt();
+            if (type == 1) {
+                int x = scan.nextInt();
+                stackEnq.push(x);
+            } else if (type == 2) {
+                if (stackDeq.isEmpty()) {
+                    while (!stackEnq.isEmpty()) {
+                        stackDeq.push(stackEnq.pop());
+                    }
+                }
+                if (!stackDeq.isEmpty()) {
+                    stackDeq.pop();
+                }
+            } else if (type == 3) {
+                if (stackDeq.isEmpty()) {
+                    while (!stackEnq.isEmpty()) {
+                        stackDeq.push(stackEnq.pop());
+                    }
+                }
+                if (!stackDeq.isEmpty()) {
+                    System.out.println(stackDeq.peek());
+                }
+            }
+        }
+    }
+}
